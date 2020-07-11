@@ -3,10 +3,11 @@ import subprocess
 import threading
 import time
 import yaml
+import glob
 
 config = yaml.safe_load(open(os.path.dirname(os.path.abspath(__file__)) + "/config.yml"))
 tmp_directory = os.path.dirname(os.path.abspath(__file__)) + "/tmp"
-last_song_file_location = os.path.dirname(os.path.abspath(__file__)) + "/tmp/lastsong.txt"
+last_song_file_location = tmp_directory + "/lastsong.txt"
 
 def download_loop():
     while True:
@@ -21,23 +22,16 @@ def player_loop():
             with open(last_song_file_location, 'r') as last_song_file: 
                 counter = int(last_song_file.readline())
         else:
-            counter = 1
+            counter = 0
     elif config["restore_last_session"] is False:
-        counter = 1
+        counter = 0
     while True:
-        # This checks if the download is finished.
-        if os.path.isfile(tmp_directory + "/" + str(counter) + ".opus") is False:
-            attempts = 0
-            while attempts < 4 and os.path.isfile(tmp_directory + "/" + str(counter) + ".opus") is False:
-                print("Looks like the download hasn't finished yet.")
-                print("Sleeping for 5 seconds...")
-                time.sleep(5)
-                attempts += 1
+        songs = sorted(glob.glob(tmp_directory + "/*.opus"))
         # This is just for checking if MPV should run with the GUI.
         if config["gui_enabled"] is True:
-            command = ["mpv", tmp_directory + "/" + str(counter) + ".opus", "--player-operation-mode=pseudo-gui"]
+            command = ["mpv", songs[counter], "--player-operation-mode=pseudo-gui"]
         else:
-            command = ["mpv", tmp_directory + "/" + str(counter) + ".opus", "--player-operation-mode=cplayer"]
+            command = ["mpv", songs[counter], "--player-operation-mode=cplayer"]
         subprocess.run(command)
         counter += 1
         if config["restore_last_session"] is True:
