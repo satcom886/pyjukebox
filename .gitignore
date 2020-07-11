@@ -1,4 +1,6 @@
 # Ignore all files created by pyjukebox
 *.opus
+*.webm
+*.part
 lastsong.txt
 downloaded.txt
