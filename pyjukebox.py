@@ -29,9 +29,17 @@ def player_loop():
         songs = sorted(glob.glob(tmp_directory + "/*.opus"))
         # This is just for checking if MPV should run with the GUI.
         if config["gui_enabled"] is True:
-            command = ["mpv", songs[counter], "--player-operation-mode=pseudo-gui"]
+            try:
+                command = ["mpv", songs[counter], "--player-operation-mode=pseudo-gui"]
+            except IndexError:
+                print("Playlist finished!")
+                exit()
         else:
-            command = ["mpv", songs[counter], "--player-operation-mode=cplayer"]
+            try:
+                command = ["mpv", songs[counter], "--player-operation-mode=cplayer"]
+            except IndexError:
+                print("Playlist finished!")
+                exit()
         subprocess.run(command)
         counter += 1
         if config["restore_last_session"] is True:
