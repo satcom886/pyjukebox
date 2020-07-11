@@ -1,0 +1,4 @@
+# Ignore all files created by pyjukebox
+*.opus
+lastsong.txt
+downloaded.txt
