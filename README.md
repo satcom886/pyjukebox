@@ -1,5 +1,5 @@
 # pyjukebox
-This is a very quickly programmed script that uses `youtube-dl` for downloading a playlist and playing it.
+This is a very quickly programmed script for downloading, playing and watching (like the command `watch`) a YouTube playlist.
 
 ## Requirements
 1. `youtube-dl`
