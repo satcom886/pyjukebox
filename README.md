@@ -1,6 +1,12 @@
 # pyjukebox
 This is a very quickly programmed script that uses `youtube-dl` for downloading a playlist and playing it.
 
+## Requirements
+1. `youtube-dl`
+1. `mpv`
+1. Some disk space
+1. A working internet connection
+
 ## Usage
 1. Create a YouTube playlist that you (and your friends) can edit
 1. Paste the playlist URL to the config file
