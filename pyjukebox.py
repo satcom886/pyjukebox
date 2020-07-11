@@ -10,7 +10,7 @@ tmp_directory = os.path.dirname(os.path.abspath(__file__)) + "/tmp"
 last_song_file_location = tmp_directory + "/lastsong.txt"
 
 def download_loop():
-    while True:
+    while getattr(download_thread, "do_run", True):
         subprocess.run(["youtube-dl", "--no-overwrites", "--ignore-errors", "--extract-audio", "--audio-quality=0", "--audio-format=opus", "--yes-playlist", "--output", tmp_directory + "/%(playlist_index)s.%(ext)s", "--download-archive", tmp_directory + "/downloaded.txt", config["playlist_url"]])
         time.sleep(config["playlist_update_rate"])
 
@@ -51,3 +51,7 @@ player_thread = threading.Thread(target=player_loop, args=())
 
 download_thread.start()
 player_thread.start()
+
+player_thread.join()
+download_thread.do_run = False
+download_thread.join()
