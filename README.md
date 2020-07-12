@@ -23,7 +23,8 @@ The configuration options are very simple.
 `playlist_url` - This is the URL to your playlist.  
 `playlist_update_rate` - How often we check for new songs (in seconds).  
 `gui_enabled` - Should `mpv` show its GUI?  
-`restore_last_session` - Remember what song was last played?
+`restore_last_session` - Remember what song was last played?  
+`audio_format` - What audio format should be used for storing the songs. Most YT videos use `opus`, so using `opus` here usually avoids transcoding (thus saving some battery and lowering CPU usage).
 
 ## Other notes / known issues
  - The script gets confused when removing songs from the playlist. Please don't do that... (ノ_<。)
