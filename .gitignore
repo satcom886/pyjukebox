@@ -1,6 +1,17 @@
 # Ignore all files created by pyjukebox
+# These are all possible audio formats from youtube-dl
 *.opus
-*.webm
+*.flac
+*.ogg
+*.mp3
+*.aac
+*.m4a
+*.waw
+
+# Partially downloaded and temporary files
 *.part
+*.webm
+
+# Files used by youtube-dl and pyjukebox to track playlist progress
 lastsong.txt
 downloaded.txt
