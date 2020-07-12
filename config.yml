@@ -1,4 +1,5 @@
-playlist_url: https://www.youtube.com/playlist?list=PLUwOFt9S-a0_zXa2XMnr28b3UKeF0-HFM
+playlist_url: https://www.youtube.com/playlist?list=PLUwOFt9S-a09bPgSXjscyl4oV4SxDAwLJ
 playlist_update_rate: 30
 gui_enabled: no
 restore_last_session: yes
+audio_format: flac
