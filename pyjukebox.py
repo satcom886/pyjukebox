@@ -17,7 +17,7 @@ def download_loop():
         time.sleep(config["playlist_update_rate"])
 
 def player_loop():
-    time.sleep(10)
+    time.sleep(15)
     # These conditions check if the song from the last session should be played.
     if config["restore_last_session"] is True:
         if os.path.isfile(last_song_file_location) is True:
