@@ -30,3 +30,4 @@ The configuration options are very simple.
  - The script gets confused when removing songs from the playlist. Please don't do that... (ノ_<。)
  - Don't delete the tmp directory. Please don't...
  - The tmp directory **has to be cleaned** each time you change the playlist.
+ - There is a 15 second delay before attempting to play the first song. This is so that it works even on slow(er) machines and internet connections.
