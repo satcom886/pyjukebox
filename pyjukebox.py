@@ -13,7 +13,7 @@ last_song_file_location = tmp_directory + "/lastsong.txt"
 
 def download_loop():
     while getattr(download_thread, "do_run", True):
-        subprocess.run(["youtube-dl", "--no-overwrites", "--ignore-errors", "--extract-audio", "--audio-quality=0", "--audio-format=" + config["audio_format"], "--yes-playlist", "--output", tmp_directory + "/%(playlist_index)s.%(ext)s", "--download-archive", tmp_directory + "/downloaded.txt", config["playlist_url"]])
+        subprocess.run(["youtube-dl", "--add-metadata", "--ignore-errors", "--extract-audio", "--audio-quality=0", "--audio-format=" + config["audio_format"], "--yes-playlist", "--output", tmp_directory + "/%(playlist_index)s.%(ext)s", "--download-archive", tmp_directory + "/downloaded.txt", config["playlist_url"]])
         time.sleep(config["playlist_update_rate"])
 
 def player_loop():
